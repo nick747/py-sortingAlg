@@ -32,3 +32,15 @@ def selectionSort(array):
             if array[j] < array[min_i]:
                 min_i = j
         array[i], array[min_i] = array[min_i], array[i]
+
+
+# Insertion Sort
+def insertionSort(array):
+    n = len(array)
+    for i in range(1, n):
+        key = array[i]
+        j = i - 1
+        while j >= 0 and array[j] > key:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = key
