@@ -103,3 +103,15 @@ def heapSort(array):
     for i in range(n - 1, 0, -1):
         array[i], array[0] = array[0], array[i]
         heapify(array, i, 0)
+
+
+# Counting Sort
+def countingSort(array):
+    max = max(array)
+    count = [0] * (max + 1)
+    for num in array:
+        count[num] += 1
+    sorted = []
+    for i in range(len(count)):
+        sorted.extend([i] * count[i])
+    return sorted
