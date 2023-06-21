@@ -33,6 +33,8 @@ def selectionSort(array):
                 min_i = j
         array[i], array[min_i] = array[min_i], array[i]
 
+    print("Sorted with Selection Sort: ", array)
+
 
 # Insertion Sort
 def insertionSort(array):
@@ -44,17 +46,18 @@ def insertionSort(array):
             array[j + 1] = array[j]
             j -= 1
         array[j + 1] = key
+    print("Sorted with Insertion Sort: ", array)
+
 
 # Merge Sort
-
-
 def mergeSort(array):
     if len(array) <= 1:
-        return array
+        array = array
     mid = len(array) // 2
     left = mergeSort(array[:mid])
     right = mergeSort(array[mid:])
-    return merge(left, right)
+    array = merge(left, right)
+    print("Sorted with Merge Sort: ", array)
 
 
 def merge(left, right):
@@ -75,12 +78,13 @@ def merge(left, right):
 # Quick Sort
 def quickSort(array):
     if len(array) <= 1:
-        return array
+        array = array
     pivot = array[len(array) // 2]
     left = [x for x in array if x < pivot]
     middle = [x for x in array if x == pivot]
     right = [x for x in array if x > pivot]
-    return quickSort(left) + middle + quickSort(right)
+    array = quickSort(left) + middle + quickSort(right)
+    print("Sorted with Quick Sort: ", array)
 
 
 # Heap Sort
@@ -99,10 +103,12 @@ def heapSort(array):
 
     n = len(array)
     for i in range(n // 2 - 1, -1, -1):
-        heapify(array, n, i)
+        array = heapify(array, n, i)
     for i in range(n - 1, 0, -1):
         array[i], array[0] = array[0], array[i]
-        heapify(array, i, 0)
+        arrau = heapify(array, i, 0)
+
+    print("Sorted with Heap Sort: ", array)
 
 
 # Counting Sort
@@ -114,4 +120,31 @@ def countingSort(array):
     sorted = []
     for i in range(len(count)):
         sorted.extend([i] * count[i])
-    return sorted
+    array = sorted
+    print("Sorted with Counting Sort: ", array)
+
+
+def main():
+    numbers = generateArray()
+    print("Generated array: ", numbers)
+    choice = int(input(
+        "Choose the sort you wanna do (1. Bubble, 2. Selection, 3. Insertion, 4. Merge, 5. Quick, 6. Heap, 7. Counting): "))
+    if (choice == 1):
+        bubbleSort(numbers)
+    elif (choice == 2):
+        selectionSort(numbers)
+    elif (choice == 3):
+        insertionSort(numbers)
+    elif (choice == 4):
+        mergeSort(numbers)
+    elif (choice == 5):
+        quickSort(numbers)
+    elif (choice == 6):
+        heapSort(numbers)
+    elif (choice == 7):
+        countingSort(numbers)
+    else:
+        print("Error: input must be a number between 1 and 7")
+
+
+main()
