@@ -81,3 +81,25 @@ def quickSort(array):
     middle = [x for x in array if x == pivot]
     right = [x for x in array if x > pivot]
     return quickSort(left) + middle + quickSort(right)
+
+
+# Heap Sort
+def heapSort(array):
+    def heapify(array, n, i):
+        max = i
+        left = 2 * i + 1
+        right = 2 * i + 2
+        if left < n and array[i] < array[left]:
+            max = left
+        if right < n and array[max] < array[right]:
+            max = right
+        if max != i:
+            array[i], array[max] = array[max], array[i]
+            heapify(array, n, max)
+
+    n = len(array)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(array, n, i)
+    for i in range(n - 1, 0, -1):
+        array[i], array[0] = array[0], array[i]
+        heapify(array, i, 0)
