@@ -1,9 +1,8 @@
 # PYTHON SORTING ALGORITHMS - TEST
 import random
 
+
 # Generate random array
-
-
 def generateArray():
     array = []
     length = int(input("Give a length to the generated array: "))
@@ -12,9 +11,8 @@ def generateArray():
 
     return array
 
+
 # Bubble Sort
-
-
 def bubbleSort(array):
     n = len(array)
     for i in range(n):
@@ -24,9 +22,8 @@ def bubbleSort(array):
 
     print("Sorted with Bubble Sort: ", array)
 
+
 # Selection Sort
-
-
 def selectionSort(array):
     n = len(array)
     for i in range(n):
